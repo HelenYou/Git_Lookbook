@@ -17,3 +17,8 @@
 # git merge v.s. git rebase
 # Use git merge as much as you can, especially when you are colarboarating with others on the same branch
 # Use git rebase when you are the only one who work on this branch, and you would like to organize the commits cleanly in risk of losing commit history
+
+# git clone single branch
+# -> git clone -b my-branch git@github.com:user/myproject.git
+# with git 1.7.10 and later
+# -> git clone --single-branch --branch <branchname> <remote-repo>
