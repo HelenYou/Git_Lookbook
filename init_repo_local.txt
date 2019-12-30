@@ -1,0 +1,35 @@
+# Start a new git repo
+https://kbroman.org/github_tutorial/pages/init.html
+
+# Step 1: Go into the directory containing the project.
+	git init
+	git add .
+	(create .gitignore and git add .gitignore)
+	git commit -m '<commit message>'
+
+# Step 2: Create new repository in github page (manual)
+# Connect github GUI and local repo
+	# if use ssh:
+	$ git remote add origin git@github.com:username/new_repo
+	$ git push -u origin master
+
+	# if use http:	
+	$ git remote add origin https://github.com/username/new_repo
+	$ git push -u origin master
+
+# Remove files from Git commit (and keep it on disk)
+	# -> Case 1 : initial commit 
+	# https://stackoverflow.com/questions/6632191/how-to-revert-initial-git-commit
+	$ git update-ref -d HEAD
+	$ git rm --cached -r .
+
+	# -> Case 2 : regular commit
+	git reset --soft HEAD^ 
+	git reset HEAD <file>
+	git commit -c ORIG_HEAD
+
+# Remove files from previous Git commit and local and remote repo
+	git rm <file>
+	git commit --amend
+# Note: amend flag tells git to commit again, but include this commit change with the last commit
+

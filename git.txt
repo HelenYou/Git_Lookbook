@@ -1,0 +1,19 @@
+# git squash
+# combine multiple commits into one commit
+# (note: DO NOT squash the commits on the branch that you colaborate with others)
+# 	git rebase -i HEAD
+# 		|
+# 	auto generate a "git-rebase-todo" file, edit so that:
+# 	-> squash the commits that you want to meld into the destination commit
+# 	-> pick the commit that you use as the destination commit
+# 	save and close the file
+# 		|
+# 	auto generate a "COMMIT_EDITMSG" file, edit so that:
+# 	-> a commit message that describes the squash effect of multiple commits
+# 		|
+# 	verify with git log
+
+
+# git merge v.s. git rebase
+# Use git merge as much as you can, especially when you are colarboarating with others on the same branch
+# Use git rebase when you are the only one who work on this branch, and you would like to organize the commits cleanly in risk of losing commit history

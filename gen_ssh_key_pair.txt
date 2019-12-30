@@ -1,0 +1,34 @@
+# Generate SSH Key Pair for User Authentication
+
+# Step 1: Check for existing SSH Keys (if you have any existing SSH keys)
+# https://www.ssh.com/ssh/keygen
+	ls -al ~/.ssh
+
+	By default, the filenames of the public keys are one of the following:
+	id_dsa.pub (id_dsa)
+	id_ecdsa.pub
+	id_ed25519.pub
+	id_rsa.pub (id_rsa)
+
+# Step 2: If no existing public and private key pair, generate a new SSH Key
+	$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+	> Enter a file in which to save the key (/home/you/.ssh/id_rsa): [Press enter]		
+	> Enter passphrase (empty for no passphrase): [Type a passphrase]
+	> Enter same passphrase again: [Type passphrase again]
+
+# Step 3: Add your SSH key to the ssh-agent
+	https://help.github.com/en/enterprise/2.15/user/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+	$ eval "$(ssh-agent -s)"
+	$ ssh-add ~/.ssh/id_rsa
+
+# Step 4: Adding a new SSH key to your GitHub account
+	$ sudo apt-get install xclip
+	^ Downloads and installs xclip. If you don't have `apt-get`, you might need to use another installer (like `yum`)
+	
+	$ xclip -sel clip < ~/.ssh/id_rsa.pub
+	^ Copies the contents of the id_rsa.pub file to your clipboard
+	$ Windows Subsystem for Linux (WSL) alternative
+	^ clip.exe < ~/.ssh/id_rsa.pub
+
+	GUI manual add -> User Settings > SSH Keys > Add
+	https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account
